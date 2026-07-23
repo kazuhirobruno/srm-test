@@ -106,4 +106,4 @@ Justificativa: explicar os parâmetros, requests e responses da aplicação.
 
 ## Ajudar na estruturação e criação das classes de testes nos Strategies
 
-Justificativa: manter o core da aplicação documentado
+Justificativa: manter o core da aplicação documentado.
