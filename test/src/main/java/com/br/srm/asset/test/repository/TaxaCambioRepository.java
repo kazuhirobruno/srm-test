@@ -8,7 +8,7 @@ import com.br.srm.asset.test.domain.TaxaCambio;
 
 public interface TaxaCambioRepository extends JpaRepository<TaxaCambio, Long> {
 
-  Optional<TaxaCambio> findFirstByMoedaOrigemAndMoedaDestinoOrderByDataAtualizacaoDesc(
+  Optional<TaxaCambio> findFirstByMoedaOrigemAndMoedaDestinoOrderByCreatedAtDesc(
       String moedaOrigem,
       String moedaDestino);
 }

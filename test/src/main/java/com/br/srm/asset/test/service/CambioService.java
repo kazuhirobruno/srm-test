@@ -23,7 +23,7 @@ public class CambioService {
     }
 
     TaxaCambio taxa = taxaCambioRepository
-        .findFirstByMoedaOrigemAndMoedaDestinoOrderByDataAtualizacaoDesc(moedaOrigem.toUpperCase(),
+        .findFirstByMoedaOrigemAndMoedaDestinoOrderByCreatedAtDesc(moedaOrigem.toUpperCase(),
             moedaDestino.toUpperCase())
         .orElseThrow(() -> new CurrencyTaxNotFoundException(
             "Taxa de câmbio não encontrada para o par: " + moedaOrigem + " -> " + moedaDestino));

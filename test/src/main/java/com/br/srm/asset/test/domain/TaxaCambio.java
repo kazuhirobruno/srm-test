@@ -34,4 +34,5 @@ public class TaxaCambio {
 
   @Column(nullable = false, updatable = false)
   private Instant createdAt;
+
 }
