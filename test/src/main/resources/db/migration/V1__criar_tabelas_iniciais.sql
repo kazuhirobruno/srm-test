@@ -15,7 +15,6 @@ CREATE TABLE taxas_cambio (
     moeda_origem VARCHAR(10) NOT NULL,
     moeda_destino VARCHAR(10) NOT NULL,
     fator_conversao NUMERIC(18, 6) NOT NULL,
-    data_atualizacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_at TIMESTAMP
     WITH
         TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,

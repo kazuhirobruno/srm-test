@@ -15,8 +15,6 @@ import jakarta.persistence.GeneratedValue;
 import java.math.BigDecimal;
 import java.time.Instant;
 
-import org.springframework.data.annotation.CreatedDate;
-
 @Entity
 @Data
 @AllArgsConstructor
@@ -44,7 +42,6 @@ public class Recebivel {
   @Column(nullable = false)
   private String status;
 
-  @CreatedDate
   @Column(updatable = false)
   private Instant createdAt;
 }

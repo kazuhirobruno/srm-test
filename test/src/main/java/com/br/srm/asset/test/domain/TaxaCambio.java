@@ -3,8 +3,6 @@ package com.br.srm.asset.test.domain;
 import java.math.BigDecimal;
 import java.time.Instant;
 
-import org.springframework.data.annotation.CreatedDate;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,10 +32,6 @@ public class TaxaCambio {
   @Column(nullable = false, precision = 18, scale = 6)
   private BigDecimal fatorConversao;
 
-  @Column(nullable = false)
-  private Instant dataAtualizacao = Instant.now();
-
-  @CreatedDate
   @Column(nullable = false, updatable = false)
   private Instant createdAt;
 }
