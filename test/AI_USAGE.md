@@ -75,3 +75,11 @@ Resposta: Apontamento correto, então foi necessário atualizar a entity de Rece
 Justificativa: tratar os erros de input. Fui passando cada entity e DTO a fim de concluir este tema
 
 Resposta: validacão em cada DTO, entity e a criação da classe global para tratamento desses erros.
+
+### Prompt 9
+
+## Em cada controller, adicionar um try catch para segmentar a resposta ao usuário de acordo com o problema encontrado, caso ocorra exception
+
+Justificativa: Atender o requisito de tratamento de exceptions.
+
+Resposta: Refatoração de cada uma das funções nas controllers.

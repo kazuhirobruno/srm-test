@@ -18,17 +18,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CreateRecebivelRequestDTO {
 
-    @NotNull(message = "O valor original é obrigatório")
-    @Positive(message = "O valor original deve ser maior que zero")
-    private BigDecimal valorOriginal;
+  @NotNull(message = "O valor original é obrigatório")
+  @Positive(message = "O valor original deve ser maior que zero")
+  private BigDecimal valorOriginal;
 
-    @NotNull(message = "O prazo é obrigatório")
-    @Positive(message = "O prazo deve ser maior que zero")
-    private Integer prazo;
+  @NotNull(message = "O prazo é obrigatório")
+  @Positive(message = "O prazo deve ser maior que zero")
+  private Integer prazo;
 
-    @NotNull(message = "O tipo de recebível é obrigatório (DUPLICATA ou CHEQUE)")
-    private TipoRecebivel tipo;
+  @NotNull(message = "O tipo de recebível é obrigatório (DUPLICATA ou CHEQUE)")
+  private TipoRecebivel tipo;
 
-    @NotBlank(message = "A moeda original é obrigatória")
-    private String moedaOriginal;
+  @NotBlank(message = "A moeda original é obrigatória")
+  private String moedaOriginal;
 }
