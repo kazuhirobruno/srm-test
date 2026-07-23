@@ -6,13 +6,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SimulateRecebivelResponseDTO {
-  private BigDecimal valorOriginal;
-  private BigDecimal valorLiquidoCalculado; // Resultado após a Strategy + Câmbio
-  private String moedaPagamento;
+public class CreateTaxaCambioResponseDTO {
+  private Long id;
+  private String moedaOrigem;
+  private String moedaDestino;
+  private BigDecimal fatorConversao;
+  private Instant dataAtualizacao;
 }

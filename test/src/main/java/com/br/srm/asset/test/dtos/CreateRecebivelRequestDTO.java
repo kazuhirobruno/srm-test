@@ -5,10 +5,12 @@ import java.math.BigDecimal;
 import com.br.srm.asset.test.domain.TipoRecebivel;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateRecebivelRequestDTO {

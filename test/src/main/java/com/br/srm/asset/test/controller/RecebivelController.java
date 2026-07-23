@@ -41,11 +41,12 @@ public class RecebivelController {
 
   @PostMapping("/simular")
   public ResponseEntity<SimulateRecebivelResponseDTO> simular(@RequestBody SimulateRecebivelRequestDTO request) {
-    Recebivel recebivelSimulado = new Recebivel();
-    recebivelSimulado.setValorOriginal(request.getValorOriginal());
-    recebivelSimulado.setPrazo(request.getPrazo());
-    recebivelSimulado.setTipo(request.getTipo());
-    recebivelSimulado.setMoedaOriginal(request.getMoedaOriginal().toUpperCase());
+    Recebivel recebivelSimulado = Recebivel.builder()
+        .valorOriginal(request.getValorOriginal())
+        .prazo(request.getPrazo())
+        .tipo(request.getTipo())
+        .moedaOriginal(request.getMoedaOriginal().toUpperCase())
+        .build();
 
     BigDecimal valorLiquidoFinal = recebivelService.simularPrecificacao(
         recebivelSimulado,

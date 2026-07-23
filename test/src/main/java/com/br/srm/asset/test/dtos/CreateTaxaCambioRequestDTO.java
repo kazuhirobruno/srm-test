@@ -11,8 +11,8 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SimulateRecebivelResponseDTO {
-  private BigDecimal valorOriginal;
-  private BigDecimal valorLiquidoCalculado; // Resultado após a Strategy + Câmbio
-  private String moedaPagamento;
+public class CreateTaxaCambioRequestDTO {
+  private String moedaOrigem;
+  private String moedaDestino;
+  private BigDecimal fatorConversao;
 }

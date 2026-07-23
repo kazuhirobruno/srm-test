@@ -3,11 +3,14 @@ package com.br.srm.asset.test.dtos;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+
 import java.math.BigDecimal;
 
 import com.br.srm.asset.test.domain.TipoRecebivel;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class SimulateRecebivelRequestDTO {
