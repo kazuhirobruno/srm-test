@@ -67,3 +67,11 @@ Resposta: Método Liquidar e Cadastrar.
 ## Percebi que em Liquidar, o valor final não estava sendo salvo em lugar nenhum. Acredito que é necessário salvar em Recebível.
 
 Resposta: Apontamento correto, então foi necessário atualizar a entity de Recebível, a Migration (resultando no script V2) e alterar a linha para salvar este item.
+
+### Prompt 8
+
+## Quero implementar as validações utilizando Valid e criando um global exception
+
+Justificativa: tratar os erros de input. Fui passando cada entity e DTO a fim de concluir este tema
+
+Resposta: validacão em cada DTO, entity e a criação da classe global para tratamento desses erros.

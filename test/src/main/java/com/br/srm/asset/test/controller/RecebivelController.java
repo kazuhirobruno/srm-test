@@ -18,6 +18,7 @@ import com.br.srm.asset.test.dtos.SimulateRecebivelResponseDTO;
 import com.br.srm.asset.test.service.RecebivelService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -28,19 +29,19 @@ public class RecebivelController {
   private final RecebivelService recebivelService;
 
   @PostMapping("/")
-  public ResponseEntity<Recebivel> cadastrar(@RequestBody CreateRecebivelRequestDTO recebivel) {
+  public ResponseEntity<Recebivel> cadastrar(@Valid @RequestBody CreateRecebivelRequestDTO recebivel) {
     Recebivel novoRecebivel = recebivelService.cadastrarRecebivel(recebivel);
     return ResponseEntity.status(HttpStatus.CREATED).body(novoRecebivel);
   }
 
   @PatchMapping("/{id}/liquidar")
-  public ResponseEntity<Void> liquidar(@PathVariable Long id, @RequestBody CreateLiquidacaoRequestDTO request) {
+  public ResponseEntity<Void> liquidar(@PathVariable Long id, @Valid @RequestBody CreateLiquidacaoRequestDTO request) {
     recebivelService.liquidar(id, request.getMoedaPagamento(), request.getTaxaBase());
     return ResponseEntity.noContent().build();
   }
 
   @PostMapping("/simular")
-  public ResponseEntity<SimulateRecebivelResponseDTO> simular(@RequestBody SimulateRecebivelRequestDTO request) {
+  public ResponseEntity<SimulateRecebivelResponseDTO> simular(@Valid @RequestBody SimulateRecebivelRequestDTO request) {
     Recebivel recebivelSimulado = Recebivel.builder()
         .valorOriginal(request.getValorOriginal())
         .prazo(request.getPrazo())

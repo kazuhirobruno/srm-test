@@ -5,6 +5,7 @@ import com.br.srm.asset.test.dtos.CreateTaxaCambioRequestDTO;
 import com.br.srm.asset.test.dtos.CreateTaxaCambioResponseDTO;
 import com.br.srm.asset.test.repository.TaxaCambioRepository;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ public class TaxaCambioController {
   private final TaxaCambioRepository taxaCambioRepository;
 
   @PostMapping
-  public ResponseEntity<CreateTaxaCambioResponseDTO> cadastrar(@RequestBody CreateTaxaCambioRequestDTO request) {
+  public ResponseEntity<CreateTaxaCambioResponseDTO> cadastrar(@Valid @RequestBody CreateTaxaCambioRequestDTO request) {
     TaxaCambio taxaCambio = new TaxaCambio();
     taxaCambio.setMoedaOrigem(request.getMoedaOrigem().toUpperCase());
     taxaCambio.setMoedaDestino(request.getMoedaDestino().toUpperCase());
