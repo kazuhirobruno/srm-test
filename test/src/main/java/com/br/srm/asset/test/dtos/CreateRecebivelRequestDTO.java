@@ -31,4 +31,7 @@ public class CreateRecebivelRequestDTO {
 
   @NotBlank(message = "A moeda original é obrigatória")
   private String moedaOriginal;
+
+  @NotBlank(message = "O nome do cedente é obrigatório")
+  private String cedente;
 }

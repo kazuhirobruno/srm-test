@@ -50,6 +50,10 @@ public class Recebivel {
   @Column(nullable = false)
   private String moedaOriginal;
 
+  @NotBlank(message = "O nome do cedente é obrigatório")
+  @Column(nullable = false)
+  private String cedente;
+
   @Column(nullable = false)
   private String status;
 

@@ -83,3 +83,15 @@ Resposta: validacão em cada DTO, entity e a criação da classe global para tra
 Justificativa: Atender o requisito de tratamento de exceptions.
 
 Resposta: Refatoração de cada uma das funções nas controllers.
+
+### Prompt 10
+
+## Gostaria de um auxilio para implementar a parte de report
+
+Resposta: criação de uma interface para o DTO, ajuste no repository adicionando paginação (visando melhorar a performance).
+
+### Prompt 11
+
+## Quero entender esse script SQL adicionado no repository
+
+Justificativa: entender o motivo do script SQL ser implementado como foi mostrado.

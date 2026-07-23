@@ -42,4 +42,7 @@ public class SimulateRecebivelRequestDTO {
   @NotNull(message = "A taxa base é obrigatória")
   @Positive(message = "A taxa base deve ser maior que zero")
   private BigDecimal taxaBase;
+
+  @NotBlank(message = "O nome do cedente é obrigatório")
+  private String cedente;
 }

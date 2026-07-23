@@ -31,6 +31,7 @@ public class RecebivelService {
         .prazo(recebivel.getPrazo())
         .valorOriginal(recebivel.getValorOriginal())
         .tipo(recebivel.getTipo())
+        .cedente(recebivel.getCedente())
         .status("PENDENTE")
         .build();
     return recebivelRepository.save(response);
