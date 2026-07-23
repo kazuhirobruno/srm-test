@@ -27,7 +27,7 @@ public class Recebivel {
   private Long id;
 
   @Column(nullable = false, precision = 18, scale = 4)
-  private BigDecimal valorFace;
+  private BigDecimal valorOriginal;
 
   @Column(nullable = false)
   private Integer prazo;
@@ -42,6 +42,15 @@ public class Recebivel {
   @Column(nullable = false)
   private String status;
 
+  @Column(precision = 18, scale = 4)
+  private BigDecimal valorLiquidado;
+
+  @Column(length = 10)
+  private String moedaLiquidacao;
+
   @Column(updatable = false)
   private Instant createdAt;
+
+  @Column(nullable = false)
+  private Instant updatedAt;
 }

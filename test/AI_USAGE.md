@@ -55,3 +55,15 @@ Resposta: sim.
 ## Seguindo o padrão strategy, gostaria de uma ideia de implementação para esta especificação. Acredito que apenas a interface e as classes implementadoras serão necessárias. Vê mais um ponto importante a ser considerado?
 
 Resposta: Adicionar o nome no @Component, assim permitindo a criação de uma Factory responsável pela gestão das estratégias implementadas. Caso seja necessário adicionar mais uma strategy futuramente, o sistema não precisará sofrer uma grande refatoração.
+
+### Prompt 6
+
+## Em RecebivelService, gostaria de implementar os transactional para evitar race condiction.
+
+Resposta: Método Liquidar e Cadastrar.
+
+### Prompt 7
+
+## Percebi que em Liquidar, o valor final não estava sendo salvo em lugar nenhum. Acredito que é necessário salvar em Recebível.
+
+Resposta: Apontamento correto, então foi necessário atualizar a entity de Recebível, a Migration (resultando no script V2) e alterar a linha para salvar este item.

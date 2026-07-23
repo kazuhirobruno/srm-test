@@ -1,0 +1,8 @@
+ALTER TABLE recebiveis RENAME COLUMN valor_face TO valor_original;
+
+ALTER TABLE recebiveis
+ADD COLUMN valor_liquidado NUMERIC(18, 4),
+ADD COLUMN moeda_liquidacao VARCHAR(10),
+ADD COLUMN updated_at TIMESTAMP
+WITH
+    TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP;
