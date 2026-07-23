@@ -101,3 +101,9 @@ Justificativa: entender o motivo do script SQL ser implementado como foi mostrad
 ## Quero documentar esse controller/DTO
 
 Justificativa: explicar os parâmetros, requests e responses da aplicação.
+
+### Prompt 13
+
+## Ajudar na estruturação e criação das classes de testes nos Strategies
+
+Justificativa: manter o core da aplicação documentado
