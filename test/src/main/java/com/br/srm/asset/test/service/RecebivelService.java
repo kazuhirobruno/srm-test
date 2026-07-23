@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import org.springframework.stereotype.Service;
 
 import com.br.srm.asset.test.domain.Recebivel;
+import com.br.srm.asset.test.dtos.CreateRecebivelRequestDTO;
 import com.br.srm.asset.test.exceptions.SettledTransactionException;
 import com.br.srm.asset.test.exceptions.TransactionNotFoundException;
 import com.br.srm.asset.test.repository.RecebivelRepository;
@@ -23,9 +24,16 @@ public class RecebivelService {
   private final CambioService cambioService;
 
   @Transactional
-  public Recebivel cadastrarRecebivel(Recebivel recebivel) {
-    recebivel.setStatus("PENDENTE");
-    return recebivelRepository.save(recebivel);
+  public Recebivel cadastrarRecebivel(CreateRecebivelRequestDTO recebivel) {
+    Recebivel response = Recebivel
+        .builder()
+        .moedaOriginal(recebivel.getMoedaOriginal())
+        .prazo(recebivel.getPrazo())
+        .valorOriginal(recebivel.getValorOriginal())
+        .tipo(recebivel.getTipo())
+        .status("PENDENTE")
+        .build();
+    return recebivelRepository.save(response);
   }
 
   public BigDecimal simularPrecificacao(Recebivel recebivel, String moedaPagamento, BigDecimal taxaBase) {
