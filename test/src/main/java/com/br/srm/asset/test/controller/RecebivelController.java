@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.srm.asset.test.domain.Recebivel;
+import com.br.srm.asset.test.dtos.CreateRecebivelRequestDTO;
 import com.br.srm.asset.test.service.RecebivelService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -20,7 +21,7 @@ public class RecebivelController {
   private final RecebivelService recebivelService;
 
   @PostMapping("/")
-  public ResponseEntity<Recebivel> cadastrar(@RequestBody Recebivel recebivel) {
+  public ResponseEntity<Recebivel> cadastrar(@RequestBody CreateRecebivelRequestDTO recebivel) {
     Recebivel novoRecebivel = recebivelService.cadastrarRecebivel(recebivel);
     return ResponseEntity.status(HttpStatus.CREATED).body(novoRecebivel);
   }
