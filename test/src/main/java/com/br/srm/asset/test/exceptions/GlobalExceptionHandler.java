@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.br.srm.asset.test.dtos.ValidationErrorResponseDTO;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
 @RestControllerAdvice
+@Hidden
 public class GlobalExceptionHandler {
 
   @ExceptionHandler(MethodArgumentNotValidException.class)

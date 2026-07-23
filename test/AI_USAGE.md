@@ -95,3 +95,9 @@ Resposta: criação de uma interface para o DTO, ajuste no repository adicionand
 ## Quero entender esse script SQL adicionado no repository
 
 Justificativa: entender o motivo do script SQL ser implementado como foi mostrado.
+
+### Prompt 12
+
+## Quero documentar esse controller/DTO
+
+Justificativa: explicar os parâmetros, requests e responses da aplicação.
