@@ -5,7 +5,7 @@ import {
   RecebivelResponseDTO, 
   PageResponse, 
   ExtratoFiltros 
-} from '@/types/recebiveis';
+} from '@/types/recebivel';
 
 export const recebivelService = {
   simular: async (dados: RecebivelCadastroDTO): Promise<SimulacaoResultadoDTO> => {

@@ -9,3 +9,9 @@ Resposta: estruturação das pastas.
 ## Com base nos tipos criados no back end, me ajude a criar os tipos que serão utilizados no front
 
 Resposta: arquivo dos tipos de recebível.
+
+### Prompt 3
+
+## Ajude com a implementação do ZOD para validação dos campos
+
+Resposta: arquivo recebivel-schema, com validação via ZOD.
