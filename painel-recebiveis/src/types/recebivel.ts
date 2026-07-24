@@ -48,3 +48,11 @@ export interface ExtratoFiltros {
   cedente?: string;
   moeda?: string;
 }
+
+export interface TaxaCambioDTO {
+  id?: number;
+  moedaOrigem: string;
+  moedaDestino: string;
+  fatorConversao: number;
+  dataAtualizacao?: string;
+}

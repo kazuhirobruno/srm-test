@@ -22,6 +22,13 @@ export const recebivelService = {
     });
   },
 
+  salvarTaxa: async (dados: any): Promise<any> => {
+    return apiFetch<any>('/taxas-cambio', {
+      method: 'POST',
+      body: JSON.stringify(dados),
+    });
+  },
+
   obterExtrato: async (filtros: ExtratoFiltros): Promise<PageResponse<RecebivelResponseDTO>> => {
     const params = new URLSearchParams();
     
