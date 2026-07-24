@@ -15,3 +15,9 @@ Resposta: arquivo dos tipos de recebível.
 ## Ajude com a implementação do ZOD para validação dos campos
 
 Resposta: arquivo recebivel-schema, com validação via ZOD.
+
+### Prompt 4
+
+## Quero implementar um grid para exibir as transacoes
+
+Resposta: estrutura para o componente grid-extrato.
