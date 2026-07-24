@@ -14,48 +14,48 @@ export function GridExtrato() {
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 bg-slate-50 p-4 rounded-lg border border-slate-200">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
         <div>
-          <label className="block text-xs font-medium text-slate-600 mb-1">Cedente</label>
+          <label className="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1">Cedente</label>
           <input
             type="text"
             value={filtros.cedente || ''}
             onChange={(e) => atualizarFiltros({ cedente: e.target.value })}
-            className="w-full rounded-md border border-slate-300 p-2 text-xs focus:outline-none focus:border-indigo-500"
+            className="w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-2 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-indigo-500"
             placeholder="Filtrar por cedente..."
           />
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-600 mb-1">Moeda</label>
+          <label className="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1">Moeda</label>
           <select
             value={filtros.moeda || ''}
             onChange={(e) => atualizarFiltros({ moeda: e.target.value || undefined })}
-            className="w-full rounded-md border border-slate-300 p-2 text-xs bg-white focus:outline-none focus:border-indigo-500"
+            className="w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-2 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-indigo-500"
           >
-            <option value="">Todas as moedas</option>
-            <option value="BRL">BRL</option>
-            <option value="USD">USD</option>
+            <option value="" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">Todas as moedas</option>
+            <option value="BRL" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">BRL</option>
+            <option value="USD" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">USD</option>
           </select>
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-600 mb-1">Data Início</label>
+          <label className="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1">Data Início</label>
           <input
             type="date"
             value={filtros.dataInicio || ''}
             onChange={(e) => atualizarFiltros({ dataInicio: e.target.value || undefined })}
-            className="w-full rounded-md border border-slate-300 p-2 text-xs focus:outline-none focus:border-indigo-500"
+            className="w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-2 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-indigo-500"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-600 mb-1">Data Fim</label>
+          <label className="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1">Data Fim</label>
           <input
             type="date"
             value={filtros.dataFim || ''}
             onChange={(e) => atualizarFiltros({ dataFim: e.target.value || undefined })}
-            className="w-full rounded-md border border-slate-300 p-2 text-xs focus:outline-none focus:border-indigo-500"
+            className="w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-2 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-indigo-500"
           />
         </div>
       </div>
@@ -64,9 +64,9 @@ export function GridExtrato() {
           {erro}
         </div>
       )}
-      <div className="overflow-x-auto rounded-lg border border-slate-200">
-        <table className="w-full border-collapse text-left text-sm text-slate-500">
-          <thead className="bg-slate-50 text-xs uppercase tracking-wider text-slate-700 border-b border-slate-200">
+      <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-800">
+        <table className="w-full border-collapse text-left text-sm text-slate-500 dark:text-slate-400">
+          <thead className="bg-slate-50 dark:bg-slate-950 text-xs uppercase tracking-wider text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-800">
             <tr>
               <th className="px-6 py-3 font-semibold">ID</th>
               <th className="px-6 py-3 font-semibold">Cedente</th>
@@ -77,48 +77,52 @@ export function GridExtrato() {
               <th className="px-6 py-3 font-semibold">Vencimento</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-200 bg-white">
+          <tbody className="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900">
             {carregando ? (
               Array.from({ length: 3 }).map((_, idx) => (
-                <tr key={idx} className="animate-pulse">
-                  <td colSpan={7} className="px-6 py-4 text-center text-slate-400">
+                <tr key={idx} className="animate-pulse bg-white dark:bg-slate-900">
+                  <td colSpan={7} className="px-6 py-4 text-center text-slate-400 dark:text-slate-500">
                     Carregando registros do motor financeiro...
                   </td>
                 </tr>
               ))
             ) : dados && dados.content.length > 0 ? (
               dados.content.map((item) => (
-                <tr key={item.id} className="hover:bg-slate-50 transition-colors">
-                  <td className="px-6 py-4 font-medium text-slate-900">#{item.id}</td>
-                  <td className="px-6 py-4">{item.cedente}</td>
+                <tr key={item.id} className="bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                  <td className="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">#{item.id}</td>
+                  <td className="px-6 py-4 text-slate-700 dark:text-slate-300">{item.cedente}</td>
                   <td className="px-6 py-4">
                     <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ${
-                      item.tipo === TipoRecebivel.DUPLICATA ? 'bg-blue-50 text-blue-700' : 'bg-purple-50 text-purple-700'
+                      item.tipo === TipoRecebivel.DUPLICATA 
+                        ? 'bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-400' 
+                        : 'bg-purple-50 text-purple-700 dark:bg-purple-950/40 dark:text-purple-400'
                     }`}>
                       {item.tipo}
                     </span>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 text-slate-600 dark:text-slate-400">
                     {item.moedaOriginal} {item.valorOriginal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                   </td>
-                  <td className="px-6 py-4 font-semibold text-slate-900">
+                  <td className="px-6 py-4 font-semibold text-slate-900 dark:text-slate-100">
                     {item.moedaLiquidacao} {item.valorLiquidado.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                   </td>
                   <td className="px-6 py-4">
                     <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ${
-                      item.status === 'LIQUIDADO' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-amber-50 text-amber-700 border border-amber-200'
+                      item.status === 'LIQUIDADO' 
+                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/30 dark:text-emerald-400 dark:border-emerald-800' 
+                        : 'bg-amber-50 text-amber-700 border border-amber-200 dark:bg-amber-950/30 dark:text-amber-400 dark:border-amber-800'
                     }`}>
                       {item.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-slate-400">
+                  <td className="px-6 py-4 text-slate-400 dark:text-slate-500">
                     {new Date(item.vencimento + 'T00:00:00').toLocaleDateString('pt-BR')}
                   </td>
                 </tr>
               ))
             ) : (
-              <tr>
-                <td colSpan={7} className="px-6 py-10 text-center text-slate-400 italic">
+              <tr className="bg-white dark:bg-slate-900">
+                <td colSpan={7} className="px-6 py-10 text-center text-slate-400 dark:text-slate-500 italic">
                   Nenhuma transação encontrada para os filtros aplicados.
                 </td>
               </tr>

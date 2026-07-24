@@ -31,7 +31,6 @@ export function FormularioCadastro() {
     },
   });
 
-  // Dispara a simulação em memória (Sem Lock no Java)
   const lidarComSimulacao = async () => {
     try {
       setCarregandoSimulacao(true);
@@ -52,7 +51,6 @@ export function FormularioCadastro() {
     }
   };
 
-  // Submete o formulário para cadastro e liquidação transacional (Com Lock Pessimista)
   const lidarComSubmissao = async (dados: RecebivelFormValues) => {
     try {
       setCarregandoLiquidacao(true);
@@ -62,7 +60,7 @@ export function FormularioCadastro() {
       await recebivelService.cadastrar(dados);
       
       setMensagemSucesso('Título cadastrado e LIQUIDADO com sucesso no motor transacional!');
-      setSimulacao(null); // Limpa o painel de simulação pós-sucesso
+      setSimulacao(null);
     } catch (err: any) {
       setMensagemErro(err.message || 'Erro ao processar liquidação atômica.');
     } finally {
@@ -72,11 +70,12 @@ export function FormularioCadastro() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      {/* Formulário de Operação */}
       <form onSubmit={handleSubmit(lidarComSubmissao)} className="lg:col-span-2 space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Cedente / Cliente</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+              Cedente / Cliente
+            </label>
             <input
               {...register('cedente')}
               type="text"
@@ -87,7 +86,7 @@ export function FormularioCadastro() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Valor Original do Título</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Valor Original do Título</label>
             <input
               {...register('valorOriginal', { valueAsNumber: true })}
               type="number"
@@ -99,7 +98,7 @@ export function FormularioCadastro() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Data de Vencimento</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Data de Vencimento</label>
             <input
               {...register('vencimento')}
               type="date"
@@ -110,33 +109,35 @@ export function FormularioCadastro() {
 
           <div className="grid grid-cols-2 gap-2">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Tipo de Título</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Tipo de Título</label>
               <select
                 {...register('tipo')}
-                className="w-full rounded-md border border-slate-300 p-2 text-sm bg-white focus:border-indigo-500 focus:outline-none"
+                className="w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-2 text-sm text-slate-900 dark:text-slate-100 focus:border-indigo-500 focus:outline-none transition-colors"
               >
-                <option value={TipoRecebivel.DUPLICATA}>Duplicata (Spread 1.5%)</option>
-                <option value={TipoRecebivel.CHEQUE}>Cheque (Spread 2.5%)</option>
+                <option value={TipoRecebivel.DUPLICATA} className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+                  Duplicata (Spread 1.5%)
+                </option>
+                <option value={TipoRecebivel.CHEQUE} className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+                  Cheque (Spread 2.5%)
+                </option>
               </select>
             </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Moeda Original</label>
+           <div>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Moeda Original</label>
               <select
                 {...register('moedaOriginal')}
-                className="w-full rounded-md border border-slate-300 p-2 text-sm bg-white focus:border-indigo-500 focus:outline-none"
+                className="w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-2 text-sm text-slate-900 dark:text-slate-100 focus:border-indigo-500 focus:outline-none transition-colors"
               >
-                <option value="BRL">BRL</option>
-                <option value="USD">USD</option>
+                <option value="BRL" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">BRL</option>
+                <option value="USD" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">USD</option>
               </select>
             </div>
           </div>
         </div>
 
-        {/* Alertas de Status do Motor Spring Boot */}
         {mensagemSucesso && <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm rounded-md">{mensagemSucesso}</div>}
         {mensagemErro && <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 text-sm rounded-md">{mensagemErro}</div>}
 
-        {/* Botões de Ação */}
         <div className="flex gap-3 pt-2">
           <button
             type="button"
@@ -155,38 +156,6 @@ export function FormularioCadastro() {
           </button>
         </div>
       </form>
-
-      {/* Painel Lateral Reativo de Exibição */}
-      <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 flex flex-col justify-between">
-        <div>
-          <h3 className="text-sm font-semibold text-slate-900 border-b border-slate-200 pb-2 mb-3">Memória de Cálculo</h3>
-          {simulacao ? (
-            <div className="space-y-3">
-              <div>
-                <p className="text-xs text-slate-500 uppercase tracking-wider">Valor Líquido Calculado</p>
-                <p className="text-2xl font-bold text-slate-950">
-                  {simulacao.moedaLiquidacao} {simulacao.valorLiquido.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-2 text-sm pt-2 border-t border-slate-200">
-                <div>
-                  <p className="text-xs text-slate-500">Spread Cobrado</p>
-                  <p className="font-medium text-slate-800">{simulacao.spreadCobrado}% a.m.</p>
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500">Taxa Cambial</p>
-                  <p className="font-medium text-slate-800">Fator: {simulacao.taxaAplicada}</p>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <p className="text-sm text-slate-400 italic">Informe os dados cadastrais do título e execute a simulação para visualizar o cálculo de valor presente e conversão cross-currency.</p>
-          )}
-        </div>
-        <div className="text-[11px] text-slate-400 mt-4 pt-2 border-t border-slate-200">
-          Operação integrada ao motor transacional ACID com proteção pessimista.
-        </div>
-      </div>
     </div>
   );
 }
